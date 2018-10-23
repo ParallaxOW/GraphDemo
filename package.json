@@ -1,0 +1,11 @@
+{
+  "dependencies": {
+    "apollo-server-azure-functions": "^1.4.0",
+    "apollo-server-module-graphiql": "^1.4.0",
+    "azure-functions-typescript": "0.0.1",
+    "graphql": "^14.0.2",
+    "graphql-tools": "^4.0.2",
+    "lodash": "^4.17.11",
+    "node-fetch": "^2.2.0"
+  }
+}
