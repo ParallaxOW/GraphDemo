@@ -2,17 +2,14 @@ const graphqlTools = require("graphql-tools");
 const find = require("lodash/find");
 const filter = require("lodash/filter");
 
+
 //these will be used in another example.
-//const fetch = require("node-fetch");
-//const https = require("https");
+const fetch = require("node-fetch");
+const https = require("https");
 
 //bring in type defs
 const book = require("./domain/book");
 const author = require("./domain/author");
-
-//bring in static data.
-const data = require("./data");
-
 
 const linkTypeDefs = `
     extend type Book{
@@ -25,20 +22,20 @@ const linkTypeDefs = `
         books: [Book],
     }
 `;
+const BASE_URL = "http://localhost:7073/api"
 
 const objectResolvers = {
     Query:{
-        Books: () => data.books,
-        BooksByTitle: (_, { title }) => find(data.books, { title }),
-        Authors: () => data.authors,
+        Books: () => fetch(`${BASE_URL}/books`).then(res => res.json()),
+        BooksByTitle: (_, { title }) => fetch(`${BASE_URL}/books/${title}`).then(res => res.json()),
+        Authors: () => fetch(`${BASE_URL}/authors`).then(res => res.json()),
         AuthorsByLastName: (_, { lastname }) => filter(data.authors, { lastname }),
-        AuthorByLastFirst: (_, { lastname, firstName }) => filter(data.authors, {lastname, firstname }),
     },
     Author: {
-        books: author => filter(data.authors, { authorId : author.id}),
+        books: author => fetch(`${BASE_URL}/bookbyauthor/${author.id}`).then(res => res.json()),
     },
     Book: {
-        author: book => find(data.authors, { id: book.authorId }),
+        author: book => fetch(`${BASE_URL}/authorbyid/${book.authorId}`).then(res => res.json()),
     },
 };
 

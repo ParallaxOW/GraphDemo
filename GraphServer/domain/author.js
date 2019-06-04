@@ -16,8 +16,6 @@ module.exports = { typeDef:
             Authors: [Author],
             #Return Books by author's Last Name
             AuthorsByLastName(lastName:String!): [Author],
-            #Return Authors by Last name, FirstName
-            AuthorByLastFirst(lastName: String!, firstName: String!): [Author],
         }
     `
 };
