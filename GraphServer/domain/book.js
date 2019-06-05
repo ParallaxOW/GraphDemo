@@ -5,9 +5,9 @@ module.exports = { typeDef:
             #Title of the book
             title: String!,
             #Genre the book belongs to
-            id: Int!
+            id: String!
             #Id of the Author
-            authorId: Int!,
+            authorId: String!,
         }
 
         type Query
@@ -16,6 +16,11 @@ module.exports = { typeDef:
             Books: [Book],
             #Return Books by author's Last Name
             BooksByTitle(title:String!): [Book],
+        }
+
+        type Mutation
+        {
+            newbook(title: String!, authorId: String!): Book!
         }
     `
 };

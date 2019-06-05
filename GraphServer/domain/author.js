@@ -3,7 +3,7 @@ module.exports = { typeDef:
         type Author
         {
             #Title of the book
-            id: Int!,
+            id: ID!,
             #Author's LastName
             lastname: String!,
             #Author's FirstName,

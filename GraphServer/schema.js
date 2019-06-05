@@ -31,6 +31,26 @@ const objectResolvers = {
         Authors: () => fetch(`${BASE_URL}/authors`).then(res => res.json()),
         AuthorsByLastName: (_, { lastname }) => filter(data.authors, { lastname }),
     },
+    Mutation:{
+        newbook: (parent, args)  => {
+            var book = {
+                title: args.title,
+                authorId: args.authorId
+            }
+            
+            fetch(`${BASE_URL}/book/`, {
+                method: 'post',
+                body: JSON.stringify(book),
+                headers: {
+                    'Accept':'application/json'
+                }
+            })
+            .then(res => res.json())
+            .catch(err => console.log(err));
+            
+            //return book;
+        }
+    },
     Author: {
         books: author => fetch(`${BASE_URL}/bookbyauthor/${author.id}`).then(res => res.json()),
     },
