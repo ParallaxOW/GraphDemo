@@ -32,27 +32,29 @@ const objectResolvers = {
         AuthorsByLastName: (_, { lastname }) => filter(data.authors, { lastname }),
     },
     Mutation:{
-        newbook: (parent, args)  => {
+        newbook: async (parent, args)  => {
             var book = {
                 id: null,
                 title: args.title,
                 authorId: args.authorId
             }
             
-            fetch(`${BASE_URL}/book/`, {
+            await fetch(`${BASE_URL}/book/`, {
                 method: 'post',
                 body: JSON.stringify(book),
                 headers: {
-                    'Content-Type':'application/json'
+                    'Content-Type':'application/json',
+                    'Accept':'application/json'
                 }
             })
             .then(res => res.json())
-            .then(json => {
-                console.log(json);
+            .then(json => { 
                 book.id = json.id;
+                console.log(book);
+                return book;
             })
             .catch(err => console.log(err));
-
+            
             return book;
         }
     },

@@ -5,7 +5,7 @@ module.exports = { typeDef:
             #Title of the book
             title: String!,
             #Genre the book belongs to
-            id: String!
+            id: ID!
             #Id of the Author
             authorId: String!,
         }
@@ -20,7 +20,7 @@ module.exports = { typeDef:
 
         type Mutation
         {
-            newbook(title: String!, authorId: String!): Book!
+            newbook(title: String!, authorId: ID!): Book
         }
     `
 };

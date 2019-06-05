@@ -8,5 +8,10 @@
     "graphql-tools": "^4.0.4",
     "lodash": "^4.17.11",
     "node-fetch": "^2.6.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/ParallaxOW/GraphDemo.git"
+  },
+  "license": "UNLICENSED"
 }

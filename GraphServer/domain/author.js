@@ -2,7 +2,7 @@ module.exports = { typeDef:
     `
         type Author
         {
-            #Title of the book
+            #Author ID
             id: ID!,
             #Author's LastName
             lastname: String!,
