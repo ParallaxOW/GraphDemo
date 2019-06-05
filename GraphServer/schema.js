@@ -34,6 +34,7 @@ const objectResolvers = {
     Mutation:{
         newbook: (parent, args)  => {
             var book = {
+                id: null,
                 title: args.title,
                 authorId: args.authorId
             }
@@ -42,13 +43,17 @@ const objectResolvers = {
                 method: 'post',
                 body: JSON.stringify(book),
                 headers: {
-                    'Accept':'application/json'
+                    'Content-Type':'application/json'
                 }
             })
             .then(res => res.json())
+            .then(json => {
+                console.log(json);
+                book.id = json.id;
+            })
             .catch(err => console.log(err));
-            
-            //return book;
+
+            return book;
         }
     },
     Author: {
