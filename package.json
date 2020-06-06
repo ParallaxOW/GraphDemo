@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "apollo-server-azure-functions": "^1.4.0",
+    "apollo-server-azure-functions": "^2.14.2",
     "apollo-server-module-graphiql": "^1.4.0",
     "azure-functions-typescript": "0.0.1",
     "fetch": "^1.1.0",
